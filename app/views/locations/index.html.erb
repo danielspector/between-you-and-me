@@ -1,10 +1,10 @@
 <h1>Between You and Me</h1>
 <%= form_tag(locations_path, method: "post") do %>
-<%= label_tag "Address 1" %>
-<%= text_field_tag "location[address1]", "Address 1" %>
+<%= label_tag "location[address1]", "Address 1" %>
+<%= text_field_tag "location[address1]" %>
 
-<%= label_tag "Address 2" %>
-<%= text_field_tag "location[address2]", "Address 2" %>
+<%= label_tag "location[address2]","Address 2" %>
+<%= text_field_tag  "location[address2]" %>
 
 <%= submit_tag "Between!" %>
 <% end %>

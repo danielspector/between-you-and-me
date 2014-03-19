@@ -1,4 +1,9 @@
-<h1>Centers#show</h1>
-<p>Find me in app/views/centers/show.html.erb</p>
-<p><%= @center.latitude %></p>
-<p><%= @center.longitude %></p>
+<h1>Map!</h1>
+<p>Location 1 address: <%= @loc1.address %></p>
+<p>Location 2 address: <%= @loc2.address %></p>
+<p>Meet here: <%= @center.address %></p>
+
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=12&markers=#{@center.latitude}%2C#{@center.longitude}&markers=#{@loc1.latitude}%2C#{@loc1.longitude}&markers=#{@loc2.latitude}%2C#{@loc2.longitude}" %>
+
+
