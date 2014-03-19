@@ -1,4 +1,4 @@
-# Between You & Me # 
+# Between You & Me 
 
 ![Whiteboard](http://i.imgur.com/n78p1GS.jpg)
 
