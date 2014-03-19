@@ -1,4 +1,7 @@
 BetweenUNMe::Application.routes.draw do
+  root "locations#index"
+  post "/locations" => "locations#create"
+  get "/center/:id" => "centers#show", as: :center
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
