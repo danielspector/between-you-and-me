@@ -1,8 +1,8 @@
-class Location < ActiveRecord::Base
+class Point < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode
-  has_many :location_centers
-  has_many :centers, through: :location_centers
+  has_many :point_centers
+  has_many :centers, through: :point_centers
 
   def self.find_between(add1, add2)
     lat_long = Geocoder::Calculations.geographic_center([add1, add2])

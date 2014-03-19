@@ -1,0 +1,13 @@
+<h1>Between You and Me</h1>
+<%= form_tag points_path, remote: true, id: 'point_form' do %>
+  <%= token_tag %>
+  <%= label_tag "point[address1]", "Address 1" %>
+  <%= text_field_tag "point[address1]" %>
+
+  <%= label_tag "point[address2]","Address 2" %>
+  <%= text_field_tag "point[address2]" %>
+
+  <%= submit_tag "Between!", :id => 'find_point_button' %>
+
+  <button href="javascript:;" id="find_me">Find Me!</button>
+<% end %>
