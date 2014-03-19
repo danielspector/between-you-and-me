@@ -9,6 +9,7 @@ class Location < ActiveRecord::Base
     center = Center.new(latitude: lat_long[0], longitude: lat_long[1])
     add1.centers << center
     add2.centers << center
+    center.id
   end
 
 end

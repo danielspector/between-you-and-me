@@ -1,4 +1,5 @@
 BetweenUNMe::Application.routes.draw do
+  get "centers/show"
   root "locations#index"
   post "/locations" => "locations#create"
   get "/center/:id" => "centers#show", as: :center
