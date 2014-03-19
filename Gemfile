@@ -11,6 +11,7 @@ gem 'geocoder'
 gem 'jbuilder', '~> 1.2'
 
 group :development, :test do
+  gem 'quiet_assets'
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'pry'
