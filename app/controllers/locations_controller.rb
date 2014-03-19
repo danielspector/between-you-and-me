@@ -1,3 +1,5 @@
+
+
 class LocationsController < ApplicationController
 
   def index
@@ -20,6 +22,21 @@ class LocationsController < ApplicationController
         }
       }
     end
+  end
+
+  def yelp_business_nearby
+
+    client = Yelp::Client.new
+
+    request = GeoPoint.new(
+      :term => "coffee",
+      :latitude => 37.788022,
+      :longitude => -122.399797
+    )
+
+    response = client.search(request)
+
+    binding.pry
   end
 
   def show
