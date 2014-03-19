@@ -1,6 +1,8 @@
 BetweenUNMe::Application.routes.draw do
   get "centers/show"
   root "locations#index"
+  get '/locations' => 'locations#index'
+  get '/locations/new' => 'locations#new'
   post "/locations" => "locations#create"
   get "/center/:id" => "centers#show", as: :center
   # The priority is based upon order of creation: first created -> highest priority.

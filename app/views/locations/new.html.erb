@@ -1,0 +1,11 @@
+<h1>Between You and Me</h1>
+<%= form_tag locations_path, remote: true, id: 'location_form' do %>
+  <%= token_tag %>
+  <%= label_tag "location[address1]", "Address 1" %>
+  <%= text_field_tag "location[address1]" %>
+
+  <%= label_tag "location[address2]","Address 2" %>
+  <%= text_field_tag "location[address2]" %>
+
+  <%= submit_tag "Between!", :id => 'find_location_button' %>
+<% end %>
