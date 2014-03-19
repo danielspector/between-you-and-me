@@ -4,6 +4,7 @@ BetweenUNMe::Application.routes.draw do
   get '/locations' => 'locations#index'
   post "/locations" => "locations#create"
   get "/center/:id" => "centers#show", as: :center
+  get "/locations/yelp" => "locations#yelp_business_nearby", as: :yelp_nearby
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

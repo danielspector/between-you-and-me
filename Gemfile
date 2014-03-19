@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'geocoder'
 gem 'jbuilder', '~> 1.2'
+gem 'yelpster'
 
 group :development, :test do
   gem 'quiet_assets'
