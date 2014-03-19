@@ -19,4 +19,5 @@ $(document).ready ->
         data.center.latitude.toString() + "%2C" + data.center.longitude.toString() + "&markers=" +
         data.address1.latitude.toString() + "%2C" + data.address1.longitude.toString() + "&markers=" +
         data.address2.latitude.toString() + "%2C" + data.address2.longitude.toString() + "'/>").insertAfter('#location_form')
+        $('<p>' + data.center.address + '</p>').insertAfter('#location_form')
     })
