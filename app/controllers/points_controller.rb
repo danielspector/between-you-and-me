@@ -9,6 +9,7 @@ class PointsController < ApplicationController
   def create
     @add1 = Point.create(address: params[:point][:address1])
     @add2 = Point.create(address: params[:point][:address2])
+    @term = params[:point][:term]
     @center = Point.find_between(@add1, @add2)
 
     respond_to do |format|
@@ -16,7 +17,8 @@ class PointsController < ApplicationController
         render :json => {
           :center => @center,
           :address1 => @add1,
-          :address2 => @add2
+          :address2 => @add2,
+          :term => @term
         }
       }
     end
@@ -27,7 +29,7 @@ class PointsController < ApplicationController
     client = Yelp::Client.new
 
     request = GeoPoint.new(
-      :term => "cheese",
+      :term => params[:center][:term],
       :latitude => params[:center][:latitude],
       :longitude => params[:center][:longitude]
     )
