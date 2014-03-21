@@ -34,15 +34,15 @@ class PointsController < ApplicationController
 
     response = client.search(request)
 
-    business_name = response['businesses'].first['name']
-    business_address = response['businesses'].first['location']['display_address'].join(' ')
+    business_name = response['businesses'].sort_by{|i| i["rating"]}.last['name']
+    business_address = response['businesses'].sort_by{|i| i["rating"]}.last['location']['display_address'].join(' ')
     the_venue = Point.create(address: business_address)
-    rating_img = response['businesses'].first['rating_img_url_large']
-    review_count = response['businesses'].first['review_count']
-    the_url = response['businesses'].first['url']
-    categories = response['businesses'].first['categories'].join(', ')
-    venue_image = response['businesses'].first['image_url']
-    open_or_closed = response['businesses'].first["is_closed"] ? "<p style='color:red;'>Closed</p>" : "<p style='color:green;'>Open</p>"
+    rating_img = response['businesses'].sort_by{|i| i["rating"]}.last['rating_img_url_large']
+    review_count = response['businesses'].sort_by{|i| i["rating"]}.last['review_count']
+    the_url = response['businesses'].sort_by{|i| i["rating"]}.last['url']
+    categories = response['businesses'].sort_by{|i| i["rating"]}.last['categories'].join(', ')
+    venue_image = response['businesses'].sort_by{|i| i["rating"]}.last['image_url']
+    open_or_closed = response['businesses'].sort_by{|i| i["rating"]}.last["is_closed"] ? "<p style='color:red;'>Closed</p>" : "<p style='color:green;'>Open</p>"
 
     respond_to do |format|
       format.js {
