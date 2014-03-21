@@ -35,15 +35,19 @@
 
 Feature List - Needs to be implemented
  
-* Yelp result, sort by highest rating rather than first
-* Actually use the interactive google maps
-* Use the Chosen jQuery plugin from Harvest for the Yelp categories
+1. Yelp result, sort by highest rating rather than first
+2. Actually use the interactive google maps
+3. Use the Chosen jQuery plugin from Harvest for the Yelp categories
   a. http://www.yelp.com/developers/documentation/category_list
-* Top three results or ability to pass and get the new one
-* Open at a specific time, when they want to go
-* Train directions from both addresses to the yelp midpoint
-* Option to switch between transit, driving and walking directions
-* Find the midpoint based on travel time rather than distance
-* Omniauth user authentication - Facebook and get friends addresses (Google)
-* Getting/storing addresses that you've been previously searched for.
-10. Front - End. Presentation is so key.
+4. Top three results or ability to pass and get the new one
+5. Open at a specific time, when they want to go
+6. Train directions from both addresses to the yelp midpoint
+7. Option to switch between transit, driving and walking directions
+8. Find the midpoint based on travel time rather than distance
+9. Omniauth user authentication - Facebook and get friends addresses (Google)
+10. Getting/storing addresses that you've been previously searched for.
+11. Front - End. Presentation is so key.
+
+##Bug List, to fix##
+
+1. 'Open & Closed' feature is currently broken
