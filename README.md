@@ -30,3 +30,19 @@
 * Rails
 * Oauth
 * Postgres
+
+## To-Do ##
+
+Feature List - Needs to be implemented
+ 
+1. Yelp result, sort by highest rating rather than first
+2. Use the Chosen jQuery plugin from Harvest for the Yelp categories
+  a. http://www.yelp.com/developers/documentation/category_list
+3. Top three results or ability to pass and get the new one
+4. Open at a specific time, when they want to go
+5. Train directions from both addresses to the yelp midpoint
+6. Option to switch between transit, driving and walking directions
+7. Find the midpoint based on travel time rather than distance
+8. Omniauth user authentication - Facebook and get friends addresses (Google)
+9. Getting/storing addresses that you've been previously searched for.
+10. Front - End. Presentation is so key.
