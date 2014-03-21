@@ -37,7 +37,7 @@ Feature List - Needs to be implemented
  
 1. Yelp result, sort by highest rating rather than first - DONE!
 2. Actually use the interactive google maps
-3. Use the Chosen jQuery plugin from Harvest for the Yelp categories - WIP - DS
+3. Use the Chosen jQuery plugin from Harvest for the Yelp categories - DONE! - Still need to add some functionality
   a. http://www.yelp.com/developers/documentation/category_list
 4. Top three results or ability to pass and get the new one
 5. Open at a specific time, when they want to go
@@ -50,4 +50,4 @@ Feature List - Needs to be implemented
 
 ##Bug List, to fix##
 
-1. 'Open & Closed' feature is currently broken
+1. 'Open & Closed' feature is currently broken - Removed.
