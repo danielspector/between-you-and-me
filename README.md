@@ -51,3 +51,4 @@ Feature List - Needs to be implemented
 ##Bug List, to fix##
 
 1. 'Open & Closed' feature is currently broken - Removed.
+2. Can't get data-placeholder to work on chosen plugin selector.
