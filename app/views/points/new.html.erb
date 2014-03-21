@@ -9,7 +9,7 @@
 
   <%#= label_tag "search[term]","Search Terms" %>
   <%#= text_field_tag "search[term]" %>
-  <select class="chosen-select" name="search[term]">
+  <select class="chosen-select" name="search[term]" data-placeholder="Where do you want to go?">
     <% @categories.each do |cat| %>
     <option><%= cat.name %></option>
     <% end %>
@@ -17,7 +17,7 @@
 
   <%= submit_tag "Between!", :id => 'find_point_button' %>
 
-  <button href="javascript:;" id="find_me">Find Me!</button>
+  <input type="button" id="go" value="Find Me!" />
 <% end %>
 
 

@@ -1,79 +1,57 @@
-// var x = document.getElementById("find_me");
-// function getLocation()
-//   {
-//   if (navigator.geolocation)
-//     {
-//     navigator.geolocation.getCurrentPosition(showPosition);
-//     }
-//   else{x.innerHTML="Geolocation is not supported by this browser.";}
-//   }
-// function showPosition(position)
-//   {
-//   x.innerHTML="Latitude: " + position.coords.latitude + 
-//   "<br>Longitude: " + position.coords.longitude;  
-//   }
+$(document).ready(function () {
 
-
-  
-//   jQuery(window).ready(function(){
-//             jQuery("#btnInit").click(initiate_geolocation);
-//         });
- 
-//         function initiate_geolocation() {
-//             navigator.geolocation.getCurrentPosition(handle_geolocation_query);
-//         }
- 
-//         function handle_geolocation_query(position){
-//             alert('Lat: ' + position.coords.latitude + ' ' +
-//                   'Lon: ' + position.coords.longitude);
-//         }
-
-// $(function(){
-//   $('#find_me').on('click', function()
-//     {
-//         $('#location_address1').val($(this).html());
-//     });
-// });
-
-
-$(document).ready(function() {
-      
-      var startingLocation;
-      $('find_me').click(function (e) {
-        // e.preventDefault();       
-        e.console.log("Here I am!")
-        // check if browser supports geolocation
-        if (navigator.geolocation) { 
-          // get user's current position
-          navigator.geolocation.getCurrentPosition(function (position) {   
-            // get latitude and longitude
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            startingLocation = latitude + "," + longitude;
-            
-           $('#location_address1').val($(startingLocation).html());
-            
-          });
+    // wire up button click
+    $('#go').click(function () {
+        // test for presence of geolocation
+        if (navigator && navigator.geolocation) {
+            // make the request for the user's position
+            navigator.geolocation.getCurrentPosition(geo_success, geo_error);
+        } else {
+            // use MaxMind IP to location API fallback
+            printAddress(geoip_latitude(), geoip_longitude(), true);
         }
-        
-        // fallback for browsers without geolocation
-        else {
-          
-          // get manually entered postcode
-          // startingLocation = $('.manual-location').val();
-          
-          // if user has entered a starting location, send starting location and destination to goToGoogleMaps function
-          if (startingLocation != '') {
-            goToGoogleMaps(startingLocation, destination);
-          }
-          // else fade in the manual postcode field
-          else {
-            $('.no-geolocation').fadeIn();
-          }
-          
-        }
-              
-          
-      });
-      
     });
+
+
+function geo_success(position) {
+    printAddress(position.coords.latitude, position.coords.longitude);
+}
+
+function geo_error(err) {
+    // instead of displaying an error, fall back to MaxMind IP to location library
+    printAddress(geoip_latitude(), geoip_longitude(), true);
+}
+
+// use Google Maps API to reverse geocode our location
+function printAddress(latitude, longitude, isMaxMind) {
+    // set up the Geocoder object
+    var geocoder = new google.maps.Geocoder();
+
+    // turn coordinates into an object
+    var yourLocation = new google.maps.LatLng(latitude, longitude);
+
+
+    // find out info about our location
+    geocoder.geocode({ 'latLng': yourLocation }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            if (results[0]) {
+                $('body').append('<p>Your Address:<br />' +
+                    results[0].formatted_address + '</p>');
+            } else {
+                error('Google did not return any results.');
+            }
+        } else {
+            error("Reverse Geocoding failed due to: " + status);
+        }
+    });
+
+    // if we used MaxMind for location, add attribution link
+    if (isMaxMind) {
+        $('body').append('<p><a href="http://www.maxmind.com" target="_blank">IP
+            to Location Service Provided by MaxMind</a></p>');
+    }
+}
+
+function error(msg) {
+    alert(msg);
+}
