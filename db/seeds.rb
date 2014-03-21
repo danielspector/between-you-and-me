@@ -753,5 +753,5 @@ new_entries = CATEGORIES.split("\n").map(&:strip).sort
 new_entries.pop(2)
 
 new_entries.each do |cat|
-  Categories.create(name: cat)
+  Category.create(name: cat)
 end
