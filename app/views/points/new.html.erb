@@ -1,5 +1,5 @@
 <h1>Between You and Me</h1>
-<%= form_tag points_path, remote: true, id: 'point_form' do %>
+<%= form_tag points_path, id: 'point_form' do %>
   <%= token_tag %>
   <%= label_tag "point[address1]", "Address 1" %>
   <%= text_field_tag "point[address1]" %>

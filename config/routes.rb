@@ -8,4 +8,6 @@ BetweenUNMe::Application.routes.draw do
 
   post "/points/yelp" => "points#yelp_business_nearby", as: :yelp_nearby
 
+  get "/center/:id" => "centers#show", as: :center
+
 end
