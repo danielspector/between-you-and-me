@@ -1,9 +1,12 @@
-<h1>Map!</h1>
-<p>You're coming from: <%= @loc1.address %></p>
-<p>Your friend's coming from: <%= @loc2.address %></p>
-<p>Meet here: <%= @center.address %></p>
-
-<%= @business_name %>
+<h1>here's where you should meet, yo</h1>
+<h4>you're coming from</h4> 
+<p><%= @loc1.address %></p>
+<h4>your friend's coming from</h4>
+<p> <%= @loc2.address %></p>
+<h4>Meet here</h4>
+<h5><a href="<%=@the_url%>"><%= @business_name.downcase %></a></h5>
+<p><%= @center.address.downcase %></p>
+<p><img src="<%= @rating_img %>" width=100><p>
 
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=12&markers=#{@center.latitude}%2C#{@center.longitude}&markers=#{@loc1.latitude}%2C#{@loc1.longitude}&markers=#{@loc2.latitude}%2C#{@loc2.longitude}" %>
 
