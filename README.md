@@ -35,7 +35,7 @@
 
 Feature List - Needs to be implemented
  
-1. Yelp result, sort by highest rating rather than first
+1. Yelp result, sort by highest rating rather than first - DONE!
 2. Actually use the interactive google maps
 3. Use the Chosen jQuery plugin from Harvest for the Yelp categories
   a. http://www.yelp.com/developers/documentation/category_list
