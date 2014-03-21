@@ -12,7 +12,7 @@ $(document).ready ->
           longitude: long
         }
         search: {
-          term: $("input[name='search[term]']").val()
+          term: $("select[name='search[term]']").val()
         }
       }
       error: ->

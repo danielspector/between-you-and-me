@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'geocoder'
 gem 'jbuilder', '~> 1.2'
 gem 'yelpster'
+gem 'chosen-rails'
 
 group :development, :test do
   gem 'quiet_assets'

@@ -4,6 +4,7 @@ class PointsController < ApplicationController
   end
 
   def new
+    @categories = Category.all
   end
 
   def create
@@ -25,7 +26,6 @@ class PointsController < ApplicationController
   def yelp_business_nearby
 
     client = Yelp::Client.new
-
     request = GeoPoint.new(
       :term => params[:search][:term],
       :latitude => params[:center][:latitude],
