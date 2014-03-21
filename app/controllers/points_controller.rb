@@ -42,7 +42,6 @@ class PointsController < ApplicationController
     the_url = response['businesses'].sort_by{|i| i["rating"]}.last['url']
     categories = response['businesses'].sort_by{|i| i["rating"]}.last['categories'].join(', ')
     venue_image = response['businesses'].sort_by{|i| i["rating"]}.last['image_url']
-    open_or_closed = response['businesses'].sort_by{|i| i["rating"]}.last["is_closed"] ? "<p style='color:red;'>Closed</p>" : "<p style='color:green;'>Open</p>"
 
     respond_to do |format|
       format.js {
@@ -55,8 +54,7 @@ class PointsController < ApplicationController
           :review_count => review_count,
           :the_url => the_url,
           :categories => categories,
-          :venue_image => venue_image,
-          :open_or_closed => open_or_closed
+          :venue_image => venue_image
         }
       }
     end

@@ -27,7 +27,6 @@ $(document).ready ->
         $("<img src='" + data.rating_img + "' />").insertAfter('#point_form')
         $("<h2><a target='_blank' href='" + data.the_url + "'>" + data.name + "</a></h2>").insertAfter('#point_form')
         $("<img src='" + data.venue_image + "' />").insertAfter('#point_form')
-        $(data.open_or_closed).insertAfter("#point_form")
 
     })
 
