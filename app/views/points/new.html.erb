@@ -1,23 +1,27 @@
 <h1>Between You and Me</h1>
-<%= form_tag points_path, id: 'point_form' do %>
+<%= form_tag points_path, id: 'point_form', role: "form" do %>
   <%= token_tag %>
-  <%= label_tag "point[address1]", "Address 1" %>
-  <%= text_field_tag "point[address1]" %>
 
-  <%= label_tag "point[address2]","Address 2" %>
-  <%= text_field_tag "point[address2]" %>
+  <div class="form-group">
+    <%= text_field_tag "point[address1]", "", class: "form-control input-medium", placeholder: "What's Your Address?" %>
+  </div>
 
-  <%#= label_tag "search[term]","Search Terms" %>
-  <%#= text_field_tag "search[term]" %>
-  <select class="chosen-select" name="search[term]" data-placeholder="Where do you want to go?">
-    <% @categories.each do |cat| %>
-    <option><%= cat.name %></option>
-    <% end %>
-  </select>
+  <div class="form-group">
+    <%= text_field_tag "point[address2]", "", class: "form-control input-medium", placeholder: "What's Your Friend's Address?" %>
+  </div>
+  
 
-  <%= submit_tag "Between!", :id => 'find_point_button' %>
+  <div class="form-group">
+    <%= label_tag "Where do you want to go together?" %>
+    <select class="chosen-select" name="search[term]" data-placeholder="Where do you want to go?" class="form-control">
+      <% @categories.each do |cat| %>
+      <option><%= cat.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <%= submit_tag "Between!", :id => 'find_point_button', class: "btn btn-warning btn-block" %>
 
-  <input type="button" id="go" value="Find Me!" />
+<!--   <input type="button" id="go" value="Find Me!" class="btn btn-warning" /> -->
 <% end %>
 
 
