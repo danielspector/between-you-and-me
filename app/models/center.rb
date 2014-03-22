@@ -29,7 +29,7 @@ class Center < ActiveRecord::Base
     # >> -3 * 10 #2 star, 10 reviews #=> -50
     # >> -5 * 10 #1 star, 10 reviews #=> -150
 
-    best_business = response['business'].sort_by{ |i| i['rating'] }.last
+    best_business = response['businesses'].sort_by{ |i| i['rating'] }.last
 
     business_info = {
       :business_name => best_business['name'],
