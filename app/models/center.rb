@@ -18,29 +18,41 @@ class Center < ActiveRecord::Base
 
     response = client.search(request)
 
-    # response['businesses'].sort_by{|i| i["rating"]}.reverse.each do |business|
-    #   business
-    # end
-
-    # 1 star: -15,  2 star: -5, 3 star: 5, 4 star: 10, 5 star: 30, weight system
-    # >> 5 * 10 #3 star, 10 reviews #=> 50
-    # >> 10 * 10 #4 star, 10 reviews #=> 100
-    # >> 30 * 10 #5 star, 10 reviews #=> 300
-    # >> -3 * 10 #2 star, 10 reviews #=> -50
-    # >> -5 * 10 #1 star, 10 reviews #=> -150
-
-    best_business = response['businesses'].sort_by{ |i| i['rating'] }.last
-
-    business_info = {
-      :business_name => best_business['name'],
-      :business_address => best_business['location']['display_address'].join(' '),
-      :the_venue => Point.create(address: best_business['location']['display_address'].join(' ')),
-      :rating_img => best_business['rating_img_url_large'],
-      :review_count => best_business['review_count'],
-      :the_url => best_business['url'],
-      :categories => best_business['categories'].join(', '),
-      :venue_image => best_business['image_url']
+    weight_multiplier = {
+      0.0 => -20.0,
+      0.5 => -17.5,
+      1.0 => -15.0,
+      1.5 => -8.0,
+      2.0 => -5.0,
+      2.5 => -2.5,
+      3.0 => 5.0,
+      3.5 => 7.5,
+      4.0 => 10.0,
+      4.5 => 15.0,
+      5.0 => 21.0
     }
+
+    best_businesses = response['businesses'].sort_by do |i|
+      0.2*Math.log(i['review_count']) * weight_multiplier[i['rating']]
+    end.last(3)
+
+    lat_long_for_three = best_businesses.map do |business|
+      Point.create(address: business['location']['display_address'].join(' '))
+    end
+
+    best_businesses.map.each_with_index do |business, index|
+      {
+        :name => business['name'],
+        :address => business['location']['display_address'].join(' '),
+        :rating_img => business['rating_img_url_large'],
+        :review_count => business['review_count'],
+        :the_url => business['url'],
+        :categories => business['categories'].join(', '),
+        :venue_image => business['image_url'],
+        :lat => lat_long_for_three[index].latitude,
+        :long => lat_long_for_three[index].longitude
+      }
+    end
   end
 
 end

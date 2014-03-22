@@ -1,24 +1,30 @@
-<%= form_tag points_path, id: 'point_form', role: "form" do %>
-  <%= token_tag %>
+<div class="row">
+  <div class="col-md-5 col-md-offset-4">
+    <h1>Between You & Me</h1>
 
-  <div class="form-group">
-    <%= text_field_tag "point[address1]", "", class: "form-control input-medium", placeholder: "What's Your Address?" %>
+    <%= form_tag points_path, id: 'point_form', role: "form" do %>
+      <%= token_tag %>
+
+      <div class="form-group">
+        <%= text_field_tag "point[address1]", "", class: "form-control input-medium", placeholder: "What's Your Address?" %>
+      </div>
+
+      <div class="form-group">
+        <%= text_field_tag "point[address2]", "", class: "form-control input-medium", placeholder: "What's Your Friend's Address?" %>
+      </div>
+
+
+      <div class="form-group">
+        <label><%=  "Where do you want to go togehter?" %></label>
+        <select class="chosen-select" name="search[term]" data-placeholder="Where do you want to go?" class="form-control input-medium">
+          <% @categories.each do |cat| %>
+          <option><%= cat.name %></option>
+          <% end %>
+        </select>
+      </div>
+      <%= submit_tag "Get the hell out of here", :id => 'find_point_button', class: "btn btn-warning btn-lg btn-block" %>
+
+    <!--   <input type="button" id="go" value="Find Me!" class="btn btn-warning" /> -->
+    <% end %>
   </div>
-
-  <div class="form-group">
-    <%= text_field_tag "point[address2]", "", class: "form-control input-medium", placeholder: "What's Your Friend's Address?" %>
-  </div>
-
-
-  <div class="form-group">
-    <label><%=  "Where do you want to go togehter?" %></label>
-    <select class="chosen-select" name="search[term]" data-placeholder="Where do you want to go?" class="form-control input-medium">
-      <% @categories.each do |cat| %>
-      <option><%= cat.name %></option>
-      <% end %>
-    </select>
-  </div>
-  <%= submit_tag "Get the hell out of here", :id => 'find_point_button', class: "btn btn-warning btn-lg btn-block" %>
-
-<!--   <input type="button" id="go" value="Find Me!" class="btn btn-warning" /> -->
-<% end %>
+</div>

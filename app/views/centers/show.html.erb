@@ -1,13 +1,20 @@
-<h1>here's where you should meet, yo</h1>
-<h4>you're coming from</h4> 
-<p><%= @loc1.address %></p>
-<h4>your friend's coming from</h4>
-<p> <%= @loc2.address %></p>
-<h4>meet here</h4>
-<h5><a href="<%=@the_url%>"><%= @business_name.downcase %></a></h5>
-<p><%= @center.address.downcase %></p>
-<p><img src="<%= @rating_img %>" width=100><p>
+<div id="two_addresses">
+  <h1>here's where you should meet, yo</h1>
+  <h4>you're coming from</h4>
+  <p><%= @loc1.address %></p>
+  <h4>your friend's coming from</h4>
+  <p> <%= @loc2.address %></p>
+</div>
+
+<div class="row">
+  <% @best_three_hash.reverse.each do |business| %>
+    <div class="col-xs-4">
+      <h2><a target="_blank" href="<%= business[:the_url] %>"><%= business[:name] %></a></h2>
+      <p><%= business[:address] %></p>
+      <p><img src="<%= business[:rating_img] %>" width=100><p>
+      <p><%= business[:review_count] %> reviews</p>
+    </div>
+  <% end %>
+</div>
 
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=12&markers=#{@center.latitude}%2C#{@center.longitude}&markers=#{@loc1.latitude}%2C#{@loc1.longitude}&markers=#{@loc2.latitude}%2C#{@loc2.longitude}" %>
-
-
