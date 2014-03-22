@@ -9,6 +9,7 @@ class Center < ActiveRecord::Base
   def yelp_business_nearby(term)
 
     client = Yelp::Client.new
+
     request = GeoPoint.new(
       :term => term,
       :latitude => latitude,
@@ -16,15 +17,29 @@ class Center < ActiveRecord::Base
     )
 
     response = client.search(request)
+
+    # response['businesses'].sort_by{|i| i["rating"]}.reverse.each do |business|
+    #   business
+    # end
+
+    # 1 star: -15,  2 star: -5, 3 star: 5, 4 star: 10, 5 star: 30, weight system
+    # >> 5 * 10 #3 star, 10 reviews #=> 50
+    # >> 10 * 10 #4 star, 10 reviews #=> 100
+    # >> 30 * 10 #5 star, 10 reviews #=> 300
+    # >> -3 * 10 #2 star, 10 reviews #=> -50
+    # >> -5 * 10 #1 star, 10 reviews #=> -150
+
+    best_business = response['business'].sort_by{ |i| i['rating'] }.last
+
     business_info = {
-      :business_name => response['businesses'].sort_by{|i| i["rating"]}.last['name'],
-      :business_address => response['businesses'].sort_by{|i| i["rating"]}.last['location']['display_address'].join(' '),
-      :the_venue => Point.create(address:  response['businesses'].sort_by{|i| i["rating"]}.last['location']['display_address'].join(' ')),
-      :rating_img => response['businesses'].sort_by{|i| i["rating"]}.last['rating_img_url_large'],
-      :review_count => response['businesses'].sort_by{|i| i["rating"]}.last['review_count'],
-      :the_url => response['businesses'].sort_by{|i| i["rating"]}.last['url'],
-      :categories => response['businesses'].sort_by{|i| i["rating"]}.last['categories'].join(', '),
-      :venue_image => response['businesses'].sort_by{|i| i["rating"]}.last['image_url']    
+      :business_name => best_business['name'],
+      :business_address => best_business['location']['display_address'].join(' '),
+      :the_venue => Point.create(address: best_business['location']['display_address'].join(' ')),
+      :rating_img => best_business['rating_img_url_large'],
+      :review_count => best_business['review_count'],
+      :the_url => best_business['url'],
+      :categories => best_business['categories'].join(', '),
+      :venue_image => best_business['image_url']
     }
   end
 
