@@ -1,6 +1,6 @@
 <div class="row max-height">
 
-  <div class="col-xs-4 max-height">
+  <div class="col-xs-3 max-height overflow-y-scroll">
 
     <div id="control">
        <strong>Start:</strong>
@@ -19,11 +19,11 @@
     <div id="directions-panel"></div>
   </div>
 
-  <div class="col-xs-4 map-panel max-height">
+  <div class="col-xs-6 map-panel max-height">
     <div id="map-canvas" class="max-height"></div>
   </div>
 
-  <div class="col-xs-4">
+  <div class="col-xs-3">
     <% @best_three_hash.reverse.each do |business| %>
       <h2><a target="_blank" href="<%= business[:the_url] %>"><%= business[:name] %></a></h2>
       <p class="yelp-point"><%= business[:address] %></p>
