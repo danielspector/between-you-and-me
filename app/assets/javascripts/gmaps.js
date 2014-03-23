@@ -5,7 +5,7 @@ function initialize() {
   directionsDisplay = new google.maps.DirectionsRenderer();
   var mapOptions = {
     zoom: 7,
-    center: new google.maps.LatLng(41.850033, -87.6500523)
+    center: new google.maps.LatLng(40.757395, -73.989977)
   };
   var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
@@ -19,7 +19,9 @@ function initialize() {
 
 function calcRoute() {
   var start = document.getElementById('start-point').value;
+  //var start = '11 broadway nyc'
   var end = document.getElementById('yelp-point').value;
+  //var end = '5 times square nyc'
   var request = {
     origin: start,
     destination: end,
