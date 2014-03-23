@@ -8,12 +8,14 @@
 </div>
 
 <div class="row">
-  <% @best_three_hash.reverse.each do |business| %>
-    <div class="col-xs-4">
-      <h2><a target="_blank" href="<%= business[:the_url] %>"><%= business[:name] %></a></h2>
-      <p class="yelp-point"><%= business[:address] %></p>
-      <p><img src="<%= business[:rating_img] %>" width=100><p>
-      <p><%= business[:review_count] %> reviews</p>
+  <% @best_three_hash.reverse.each_with_index do |business, index| %>
+    <div id= "yelp_<%= index %>">
+      <div class="col-xs-4">
+        <h2><a target="_blank" href="<%= business[:the_url] %>"><%= business[:name] %></a></h2>
+        <p class="yelp-point"><%= business[:address] %></p>
+        <p><img src="<%= business[:rating_img] %>" width=100><p>
+        <p><%= business[:review_count] %> reviews</p>
+      </div>
     </div>
   <% end %>
 </div>
@@ -27,7 +29,7 @@
     </select>
     <strong>End:</strong>
     <select id="yelp-point" onchange="calcRoute();">
-      <% @best_three_hash.reverse.each do |business| %>
+      <% @best_three_hash.each do |business| %>
         <option value="<%= business[:address] %>"><%= business[:name] %></option>
       <% end %>
     </select>
