@@ -1,37 +1,42 @@
-
-<div id="two_addresses">
-  <h1>here's where you should meet, yo</h1>
+<!-- <div id="two_addresses">
   <h4>you're coming from</h4>
   <p class="first-point"><%= @loc1.address %></p>
   <h4>your friend's coming from</h4>
   <p class="second-point"> <%= @loc2.address %></p>
-</div>
+</div> -->
 
-<div class="row">
-  <% @best_three_hash.reverse.each do |business| %>
-    <div class="col-xs-4">
-      <h2><a target="_blank" href="<%= business[:the_url] %>"><%= business[:name] %></a></h2>
-      <p class="yelp-point"><%= business[:address] %></p>
-      <p><img src="<%= business[:rating_img] %>" width=100><p>
-      <p><%= business[:review_count] %> reviews</p>
-    </div>
-  <% end %>
-</div>
+<div class="row max-height">
 
+  <div class="col-xs-4 max-height">
 
- <div id="control">
-    <strong>Start:</strong>
-    <select id="start-point" onchange="calcRoute();">
-      <option value="<%= @loc1.address%>">you</option>
-      <option value="<%= @loc2.address %>">your friend</option>
-    </select>
-    <strong>End:</strong>
-    <select id="yelp-point" onchange="calcRoute();">
-      <% @best_three_hash.reverse.each do |business| %>
-        <option value="<%= business[:address] %>"><%= business[:name] %></option>
-      <% end %>
-    </select>
+    <div id="control">
+       <strong>Start:</strong>
+       <select id="start-point" onchange="calcRoute();">
+         <option value="<%= @loc1.address%>">you</option>
+         <option value="<%= @loc2.address %>">your friend</option>
+       </select>
+       <strong>End:</strong>
+       <select id="yelp-point" onchange="calcRoute();">
+         <% @best_three_hash.each do |business| %>
+           <option value="<%= business[:address] %>"><%= business[:name] %></option>
+         <% end %>
+       </select>
+     </div>
+
+    <div id="directions-panel"></div>
   </div>
 
-<div id="map-canvas"></div>
-<div id="directions-panel"></div>
+  <div class="col-xs-4 map-panel max-height">
+    <div id="map-canvas" class="max-height"></div>
+  </div>
+
+  <div class="col-xs-4">
+    <% @best_three_hash.reverse.each do |business| %>
+      <h2><a target="_blank" href="<%= business[:the_url] %>"><%= business[:name] %></a></h2>
+      <p class="yelp-point"><%= business[:address] %></p>
+      <p><img src="<%= business[:rating_img] %>"><p>
+      <p><%= business[:review_count] %> reviews</p>
+    <% end %>
+  </div>
+
+</div>
