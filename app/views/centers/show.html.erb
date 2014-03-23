@@ -1,20 +1,56 @@
+
 <div id="two_addresses">
   <h1>here's where you should meet, yo</h1>
   <h4>you're coming from</h4>
-  <p><%= @loc1.address %></p>
+  <p class="first-point"><%= @loc1.address %></p>
   <h4>your friend's coming from</h4>
-  <p> <%= @loc2.address %></p>
+  <p class="second-point"> <%= @loc2.address %></p>
 </div>
 
 <div class="row">
   <% @best_three_hash.reverse.each do |business| %>
     <div class="col-xs-4">
       <h2><a target="_blank" href="<%= business[:the_url] %>"><%= business[:name] %></a></h2>
-      <p><%= business[:address] %></p>
+      <p class="yelp-point"><%= business[:address] %></p>
       <p><img src="<%= business[:rating_img] %>" width=100><p>
       <p><%= business[:review_count] %> reviews</p>
     </div>
   <% end %>
 </div>
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=12&markers=#{@center.latitude}%2C#{@center.longitude}&markers=#{@loc1.latitude}%2C#{@loc1.longitude}&markers=#{@loc2.latitude}%2C#{@loc2.longitude}" %>
+
+ <div id="control">
+      <strong>Start:</strong>
+      <select id="start" onchange="calcRoute();">
+        <option value="chicago, il">Chicago</option>
+        <option value="st louis, mo">St Louis</option>
+        <option value="joplin, mo">Joplin, MO</option>
+        <option value="oklahoma city, ok">Oklahoma City</option>
+        <option value="amarillo, tx">Amarillo</option>
+        <option value="gallup, nm">Gallup, NM</option>
+        <option value="flagstaff, az">Flagstaff, AZ</option>
+        <option value="winona, az">Winona</option>
+        <option value="kingman, az">Kingman</option>
+        <option value="barstow, ca">Barstow</option>
+        <option value="san bernardino, ca">San Bernardino</option>
+        <option value="los angeles, ca">Los Angeles</option>
+      </select>
+      <strong>End:</strong>
+      <select id="end" onchange="calcRoute();">
+        <option value="chicago, il">Chicago</option>
+        <option value="st louis, mo">St Louis</option>
+        <option value="joplin, mo">Joplin, MO</option>
+        <option value="oklahoma city, ok">Oklahoma City</option>
+        <option value="amarillo, tx">Amarillo</option>
+        <option value="gallup, nm">Gallup, NM</option>
+        <option value="flagstaff, az">Flagstaff, AZ</option>
+        <option value="winona, az">Winona</option>
+        <option value="kingman, az">Kingman</option>
+        <option value="barstow, ca">Barstow</option>
+        <option value="san bernardino, ca">San Bernardino</option>
+        <option value="los angeles, ca">Los Angeles</option>
+      </select>
+    </div>
+
+<div id="map-canvas" style="float:left;width:70%; height:100%"></div>
+<div id="directionsPanel" style="float:right;width:30%;height 100%"></div>
