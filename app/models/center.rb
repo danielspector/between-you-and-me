@@ -13,7 +13,8 @@ class Center < ActiveRecord::Base
     request = GeoPoint.new(
       :term => term,
       :latitude => latitude,
-      :longitude => longitude
+      :longitude => longitude,
+      :accuracy => 0.5
     )
 
     response = client.search(request)

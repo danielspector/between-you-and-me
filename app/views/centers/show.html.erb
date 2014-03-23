@@ -10,7 +10,7 @@
        </select>
        <strong>End:</strong>
        <select id="yelp-point" onchange="calcRoute();">
-         <% @best_three_hash.each do |business| %>
+         <% @best_three_hash.each_with_index do |business, num| %>
            <option value="<%= business[:address] %>"><%= business[:name] %></option>
          <% end %>
        </select>
@@ -32,4 +32,12 @@
     <% end %>
   </div>
 
+  <div style="display:none" class="text" id="number_form">
+    <%= form_tag(send_text_path, :method => :get, remote: true) do %>
+      <%= text_field_tag(:number, nil, :placeholder => '555-555-5555')%><br>
+      <%= submit_tag("Submit", id: "close-this") %>
+    <% end %>
+  </div>
+
+  <a href="#number_form" class="fancybox"><div>Text This!</div></a>
 </div>

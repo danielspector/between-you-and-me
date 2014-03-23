@@ -9,5 +9,5 @@ BetweenUNMe::Application.routes.draw do
   post "/points/yelp" => "points#yelp_business_nearby", as: :yelp_nearby
 
   get "/center/:id" => "centers#show", as: :center
-
+  get "/twilio" => "centers#send_text", as: :send_text
 end
