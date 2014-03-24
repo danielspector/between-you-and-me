@@ -15,7 +15,7 @@ class CentersController < ApplicationController
       to: params[:number],
       body: "This is some awesome stuff #{line.sample}"
     )
-    
+
     respond_to do |format|
       format.js
     end

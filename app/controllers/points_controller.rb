@@ -1,4 +1,3 @@
-# require 'actionpack/action_caching'
 class PointsController < ApplicationController
   caches_action :new
 
