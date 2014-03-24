@@ -14,7 +14,7 @@ class Center < ActiveRecord::Base
       :term => term,
       :latitude => latitude,
       :longitude => longitude,
-      :accuracy => 0.5
+      :radius_filter => 3200
     )
 
     response = client.search(request)
@@ -38,7 +38,7 @@ class Center < ActiveRecord::Base
     end.last(3)
 
     lat_long_for_three = best_businesses.map do |business|
-      Point.create(address: business['location']['display_address'].join(' '))
+      Point.find_or_create_by(address: business['location']['display_address'].join(' '))
     end
 
     best_businesses.map.each_with_index do |business, index|
