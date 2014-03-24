@@ -5,7 +5,7 @@ var directionsService = new google.maps.DirectionsService();
 function initialize() {
   directionsDisplay = new google.maps.DirectionsRenderer();
   var mapOptions = {
-    zoom: 7,
+    zoom: 12,
     center: new google.maps.LatLng(40.757395, -73.989977)
   };
 
@@ -14,11 +14,17 @@ function initialize() {
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
-  var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+  var myLatlng = new google.maps.LatLng(40.776272,-73.976013);
+  var test = document.getElementById('yelp_1').value;
   var marker = new google.maps.Marker({
     position: myLatlng,
     map: map,
-    title:"Hello World!"
+    // title:"Hello World!"
+  });
+  var marker = new google.maps.Marker({
+    position: test,
+    map: map,
+    // title:"Hello World!"
   });
 
   var control = document.getElementById('control');
@@ -28,9 +34,7 @@ function initialize() {
 
 function calcRoute() {
   var start = document.getElementById('start-point').value;
-  //var start = '11 broadway nyc'
   var end = document.getElementById('yelp-point').value;
-  //var end = '5 times square nyc'
   var request = {
     origin: start,
     destination: end,
