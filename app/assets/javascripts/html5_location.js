@@ -17,7 +17,7 @@
 //     printAddress(position.coords.latitude, position.coords.longitude);
 // }
 
-// function geo_error(err) {
+// function geo_error(err) {    
 //     // instead of displaying an error, fall back to MaxMind IP to location library
 //     printAddress(geoip_latitude(), geoip_longitude(), true);
 // }

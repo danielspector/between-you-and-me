@@ -11,6 +11,8 @@ gem 'geocoder'
 gem 'jbuilder', '~> 1.2'
 gem 'yelpster'
 gem 'chosen-rails'
+gem 'twilio-ruby'
+gem 'fancybox2-rails', '~> 0.2.8'
 
 group :development, :test do
   gem 'quiet_assets'
@@ -18,6 +20,11 @@ group :development, :test do
   gem 'better_errors'
   gem 'pry'
   gem 'hirb'
+end
+
+group :development do
+  gem 'rack-mini-profiler'
+  gem 'actionpack-action_caching'
 end
 
 group :doc do
