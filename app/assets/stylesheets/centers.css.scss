@@ -1,7 +1,7 @@
 // Place all the styles related to the centers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+@import url("http://fonts.googleapis.com/css?family=Lato:700");
 
 html, body, #map_canvas {
   width: 100%;
@@ -29,3 +29,34 @@ body {
 .overflow-y-scroll {
   overflow-y: scroll;
 }
+
+// For fancybox
+
+input[type=submit] {
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 15px 0px;
+    margin: 15px 0px;
+    text-transform: uppercase;
+    position: relative;
+    background: rgba(52, 152, 219,1.0);
+    box-shadow: 0 6px #527a52;
+    font-family: "Lato", "sans-serif";
+    font-style: italic;
+    font-weight: 800;
+    font-size: 1.2em;
+    color: white;
+    border-radius: 0 0 5px 5px;
+
+    &:hover{
+    box-shadow: 0 4px #527a52;
+    top: 2px;
+    }
+
+    &:active{
+      box-shadow: 0 0 #527a52;
+      top: 6px;
+    }
+
+  }
