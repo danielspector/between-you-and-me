@@ -1,51 +1,71 @@
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
 
+  var map;
+  var directionsDisplay;
+  globalVariable = {}
+  google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener(window, 'load', calcRoute);
 
-function initialize() {
-  directionsDisplay = new google.maps.DirectionsRenderer();
-  var mapOptions = {
-    zoom: 12,
-    center: new google.maps.LatLng(40.757395, -73.989977)
-  };
+  function initialize() {
+    directionsDisplay = new google.maps.DirectionsRenderer();
 
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-  directionsDisplay.setMap(map);
-  directionsDisplay.setPanel(document.getElementById('directions-panel'));
+    var mapOptions = {
+      zoom: 7,
+      center: new google.maps.LatLng(40.757395, -73.989977)
+    };
 
-  var myLatlng = new google.maps.LatLng(40.776272,-73.976013);
-  var test = document.getElementById('yelp_1').value;
-  var marker = new google.maps.Marker({
-    position: myLatlng,
-    map: map,
-    // title:"Hello World!"
-  });
-  var marker = new google.maps.Marker({
-    position: test,
-    map: map,
-    // title:"Hello World!"
-  });
+    map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+    directionsDisplay.setMap(map);
+    directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
-  var control = document.getElementById('control');
-  control.style.display = 'block';
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
-}
+    var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title:"Hello World!"
+    });
 
-function calcRoute() {
-  var start = document.getElementById('start-point').value;
-  var end = document.getElementById('yelp-point').value;
-  var request = {
-    origin: start,
-    destination: end,
-    travelMode: google.maps.TravelMode.TRANSIT
-  };
-  directionsService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
+    var control = document.getElementById('control');
+    control.style.display = 'block';
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+    console.log('done with initialize');
+  }
+
+  function calcRoute(yelp_address) {
+    console.log("line 41: calRoute")
+    // yelp_address = yelp_address || $('.yelp-point').eq(0).text();
+    if ( typeof(yelp_address) == "object" ) {
+      yelp_address = $('.yelp-point').eq(0).text();
     }
-  });
-}
+    var start = $('#start-point').val();
 
-google.maps.event.addDomListener(window, 'load', initialize);
-google.maps.event.addDomListener(window, 'load', calcRoute);
+    console.log('start is: ' + start);
+    console.log('end is: ' + yelp_address);
+
+    var request = {
+      origin: start,
+      destination: yelp_address,
+      travelMode: google.maps.TravelMode.TRANSIT
+    };
+    console.log("Line 56: after request object is created");
+
+    var directionsService = new google.maps.DirectionsService();
+    console.log("Line 69: after directionsService is created");
+
+    if (globalVariable[yelp_address]) {
+      directionsDisplay.setDirections(globalVariable[yelp_address]);
+      return
+    }
+
+    directionsService.route(request, function(response, status) {
+      console.log(status);
+      globalVariable[yelp_address] = response;
+
+      if (status == google.maps.DirectionsStatus.OK) {
+        console.log("CHECKING STATUS, line 82")
+        directionsDisplay.setDirections(response);
+      }
+    });
+
+    console.log("line 87 done");
+  }
