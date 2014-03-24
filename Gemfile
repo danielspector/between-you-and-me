@@ -20,6 +20,10 @@ group :development, :test do
   gem 'hirb'
 end
 
+group :development do
+  gem 'rack-mini-profiler'
+end
+
 group :doc do
   gem 'sdoc', require: false
 end
