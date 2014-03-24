@@ -24,11 +24,13 @@
   </div>
 
   <div class="col-xs-3">
-    <% @best_three_hash.reverse.each do |business| %>
-      <h2><a target="_blank" href="<%= business[:the_url] %>"><%= business[:name] %></a></h2>
-      <p class="yelp-point"><%= business[:address] %></p>
-      <p><img src="<%= business[:rating_img] %>"><p>
-      <p><%= business[:review_count] %> reviews</p>
+    <% @best_three_hash.reverse.each_with_index do |business, index| %>
+      <div class="yelp-result" id="yelp-result-<%= index %>">
+        <h2><a target="_blank" href="<%= business[:the_url] %>"><%= business[:name] %></a></h2>
+        <p class="yelp-point"><%= business[:address] %></p>
+        <p><img src="<%= business[:rating_img] %>"><p>
+        <p><%= business[:review_count] %> reviews</p>
+      </div>
     <% end %>
   </div>
 
