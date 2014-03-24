@@ -22,6 +22,11 @@ group :development, :test do
   gem 'hirb'
 end
 
+group :development do
+  gem 'rack-mini-profiler'
+  gem 'actionpack-action_caching'
+end
+
 group :doc do
   gem 'sdoc', require: false
 end
