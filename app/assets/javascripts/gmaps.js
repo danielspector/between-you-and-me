@@ -1,8 +1,8 @@
 
   var map;
   var directionsDisplay;
-  globalVariable = {}
-  hashForLatLong = {}
+  yelp_routes = {}
+  var hashForLatLon = {}
   google.maps.event.addDomListener(window, 'load', initialize);
   // google.maps.event.addDomListener(window, 'load', calcRoute);
 
@@ -10,7 +10,8 @@
     directionsDisplay = new google.maps.DirectionsRenderer();
 
     var mapOptions = {
-      zoom: 7,
+      //we will update this later
+      zoom: 12,
       center: new google.maps.LatLng(40.757395, -73.989977)
     };
 
@@ -20,25 +21,39 @@
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
+    // @loc1
+
+    //@loc2
+
+
+    // Take the lat lon of the yelp points and put them in the hash
+    // Also create markers for each.
     $('.yelp-latlong').each(function(){
       var lat = $(this).text().split(', ')[0];
       var lon = $(this).text().split(', ')[1];
       var thisLatLong = new google.maps.LatLng(lat, lon);
+      hashForLatLon[$('this').text()] = thisLatLong;
       var marker = new google.maps.Marker({
         position: thisLatLong,
         map: map,
       });
     });
 
+    // Get lat lon of the friends' locations and put them in the hash
+    // Also create markers for each.
+    $('.friend-latlong').each(function(){
+      var lat = $(this).text().split(', ')[0];
+      var lon = $(this).text().split(', ')[1];
+      var thisLatLong = new google.maps.LatLng(lat, lon);
+      hashForLatLon[$('this').text()] = thisLatLong;
+      var marker = new google.maps.Marker({
+        position: thisLatLong,
+        map: map,
+      });
+    });
 
-    // var myLatlng = new google.maps.LatLng(40.2, -73.989977);
-    // var marker = new google.maps.Marker({
-    //   position: myLatlng,
-    //   map: map,
-    //   title:"Hello World!"
-    // });
-
- 
+    // Update the zoom level based on the friends' and yelp locations
+    map.setCenter(new google.maps.LatLng(40.757395, -73.989977));
 
     var control = document.getElementById('control');
     control.style.display = 'block';
@@ -47,7 +62,7 @@
   }
 
   function calcRoute(yelp_address) {
-    console.log("line 41: calRoute")
+    console.log("line 41: calcRoute")
     // yelp_address = yelp_address || $('.yelp-point').eq(0).text();
     if ( typeof(yelp_address) == "object" ) {
       yelp_address = $('.yelp-point').eq(0).text();
@@ -67,20 +82,18 @@
     var directionsService = new google.maps.DirectionsService();
     console.log("Line 69: after directionsService is created");
 
-    if (globalVariable[yelp_address]) {
-      directionsDisplay.setDirections(globalVariable[yelp_address]);
+    if (yelp_routes[yelp_address]) {
+      directionsDisplay.setDirections(yelp_routes[yelp_address]);
       return
     }
 
     directionsService.route(request, function(response, status) {
-      console.log(status);
-      globalVariable[yelp_address] = response;
+      console.log("Status of google direction service is: " + status);
+      yelp_routes[yelp_address] = response;
 
       if (status == google.maps.DirectionsStatus.OK) {
-        console.log("CHECKING STATUS, line 82")
         directionsDisplay.setDirections(response);
       }
     });
 
-    console.log("line 87 done");
   }

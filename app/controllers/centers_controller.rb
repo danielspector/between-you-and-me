@@ -1,10 +1,9 @@
 class CentersController < ApplicationController
   def show
     @center = Center.find(params[:id])
-    @loc1 = @center.points.first
-    @loc2 = @center.points.second
+    @loc1 = @center.points[0]
+    @loc2 = @center.points[1]
     @term = session[:search_term]
-
     @best_three_hash = @center.yelp_business_nearby(@term)
   end
 
