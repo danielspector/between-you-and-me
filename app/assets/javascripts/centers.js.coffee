@@ -6,3 +6,10 @@ $(document).ready ->
   $('.yelp-result').click ->
     yelp_address = $(this).find('.yelp-point').text()
     calcRoute(yelp_address)
+    console.log("The Yelp address is: " + yelp_address)
+    routed_gmaps = "<div style=display:none'><input name='sent_gmaps' type='hidden' value='" + yelp_address + "'/></div>"
+    $("div#number_form input").prepend(routed_gmaps)
+
+
+    
+

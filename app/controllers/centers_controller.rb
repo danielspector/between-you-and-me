@@ -13,7 +13,7 @@ class CentersController < ApplicationController
     TWILIO_CLIENT.account.messages.create(
       from: "+13473826253",
       to: params[:number],
-      body: "This is some awesome stuff #{line.sample}"
+      body: "Hey! We're going to https://www.google.com/maps/place/#{params[:sent_gmaps].split(" ").join("-")}"
     )
 
     respond_to do |format|
