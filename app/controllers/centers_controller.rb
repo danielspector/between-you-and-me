@@ -11,7 +11,7 @@ class CentersController < ApplicationController
     to_address = params[:sent_gmaps].split(" ").join("+")
     from_address = params[:sent_from_add].split(" ").join("-")
     TWILIO_CLIENT.account.messages.create(
-      from: ENV['TWILIO_NUM'], # +15036837889
+      from: ENV['TWILIO_NUM'],
       to: params[:number],
       body: "Hey! We're going to https://www.google.com/maps/dir/#{from_address}/#{to_address}"
     )
