@@ -76,6 +76,6 @@ $(document).ready(function() {
   var map;
   var directionsDisplay;
   var yelp_routes = {}
-  var hashForLatLon = {}
+  hashForLatLon = {}
   google.maps.event.addDomListener(window, 'load', initialize);
 })
