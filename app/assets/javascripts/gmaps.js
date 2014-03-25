@@ -2,8 +2,9 @@
   var map;
   var directionsDisplay;
   globalVariable = {}
+  hashForLatLong = {}
   google.maps.event.addDomListener(window, 'load', initialize);
-  google.maps.event.addDomListener(window, 'load', calcRoute);
+  // google.maps.event.addDomListener(window, 'load', calcRoute);
 
   function initialize() {
     directionsDisplay = new google.maps.DirectionsRenderer();
@@ -13,17 +14,31 @@
       center: new google.maps.LatLng(40.757395, -73.989977)
     };
 
-    map = new google.maps.Map(document.getElementById('map-canvas'),
-        mapOptions);
+
+
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
-    var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title:"Hello World!"
+    $('.yelp-latlong').each(function(){
+      var lat = $(this).text().split(', ')[0];
+      var lon = $(this).text().split(', ')[1];
+      var thisLatLong = new google.maps.LatLng(lat, lon);
+      var marker = new google.maps.Marker({
+        position: thisLatLong,
+        map: map,
+      });
     });
+
+
+    // var myLatlng = new google.maps.LatLng(40.2, -73.989977);
+    // var marker = new google.maps.Marker({
+    //   position: myLatlng,
+    //   map: map,
+    //   title:"Hello World!"
+    // });
+
+ 
 
     var control = document.getElementById('control');
     control.style.display = 'block';
