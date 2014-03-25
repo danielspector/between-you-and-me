@@ -16,7 +16,8 @@
 
       <div class="form-group">
         <label><%=  "Where do you want to go together?" %></label>
-        <select class="chosen-select" name="search[term]" data-placeholder="Where do you want to go?" class="form-control input-medium">
+        <select class="chosen-select" name="search[term]" data-placeholder="Choose a Yelp Category!" class="form-control input-medium">
+          <option value=""></option>
           <% @categories.each do |cat| %>
           <option><%= cat.name %></option>
           <% end %>
