@@ -31,11 +31,10 @@ CATEGORIES = <<-CAT
     Boot Camps
     Boxing
     Dance Studios
-    Gyms 
+    Gyms
     Martial Arts
     Meditation Centers
     Pilates
-    Swimming Lessons/Schools
     Tai Chi
     Trainers
     Yoga
@@ -128,7 +127,6 @@ CATEGORIES = <<-CAT
     Cosmetics & Beauty Supply
     Day Spas
     Eyelash Service
-    Hair Extensions
     Hair Removal
     Laser Hair Removal
     Hair Salons
@@ -138,7 +136,6 @@ CATEGORIES = <<-CAT
     Men's Hair Salons
     Makeup Artists
     Massage
-    Medical Spas
     Nail Salons
     Permanent Makeup
     Piercing
@@ -179,7 +176,6 @@ CATEGORIES = <<-CAT
     Event Planning & Services
     Bartenders
     Boat Charters
-    Cards & Stationery
     Caterers
     Clowns
     DJs
@@ -353,16 +349,7 @@ CATEGORIES = <<-CAT
     Plumbing
     Pool Cleaners
     Pressure Washers
-    Real Estate
-    Apartments
-    Commercial Real Estate
-    Home Staging
     Mortgage Brokers
-    Property Management
-    Real Estate Agents
-    Real Estate Services
-    Shared Office Spaces
-    University Housing
     Roofing
     Security Systems
     Shades & Blinds
@@ -453,7 +440,6 @@ CATEGORIES = <<-CAT
     Comedy Clubs
     Country Dance Halls
     Dance Clubs
-    Jazz & Blues
     Karaoke
     Music Venues
     Piano Bars
@@ -538,7 +524,6 @@ CATEGORIES = <<-CAT
     African
     Senegalese
     South African
-    American
     American
     Arabian
     Argentine
@@ -655,10 +640,8 @@ CATEGORIES = <<-CAT
     Shopping
     Adult
     Antiques
-    Art Galleries
     Arts & Crafts
     Art Supplies
-    Cards & Stationery
     Costumes
     Embroidery & Crochet
     Fabric Stores
@@ -677,7 +660,6 @@ CATEGORIES = <<-CAT
     Bridal
     Computers
     Cosmetics & Beauty Supply
-    Department Stores
     Discount Store
     Drugstores
     Electronics
@@ -694,7 +676,6 @@ CATEGORIES = <<-CAT
     Men's Clothing
     Plus Size Fashion
     Shoe Stores
-    Sports Wear
     Surf Shop
     Swimwear
     Used, Vintage & Consignment

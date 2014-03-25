@@ -1,7 +1,7 @@
 
   var map;
   var directionsDisplay;
-  globalVariable = {}
+  yelp_routes = {}
   var hashForLatLon = {}
   google.maps.event.addDomListener(window, 'load', initialize);
   // google.maps.event.addDomListener(window, 'load', calcRoute);
@@ -51,14 +51,9 @@
         map: map,
       });
     });
-    
-
-
 
     // Update the zoom level based on the friends' and yelp locations
     map.setCenter(new google.maps.LatLng(40.757395, -73.989977));
-    var bounds = new google.maps.LatLngBounds();
-
 
     var control = document.getElementById('control');
     control.style.display = 'block';
@@ -67,7 +62,7 @@
   }
 
   function calcRoute(yelp_address) {
-    console.log("line 41: calRoute")
+    console.log("line 41: calcRoute")
     // yelp_address = yelp_address || $('.yelp-point').eq(0).text();
     if ( typeof(yelp_address) == "object" ) {
       yelp_address = $('.yelp-point').eq(0).text();
@@ -87,20 +82,18 @@
     var directionsService = new google.maps.DirectionsService();
     console.log("Line 69: after directionsService is created");
 
-    if (globalVariable[yelp_address]) {
-      directionsDisplay.setDirections(globalVariable[yelp_address]);
+    if (yelp_routes[yelp_address]) {
+      directionsDisplay.setDirections(yelp_routes[yelp_address]);
       return
     }
 
     directionsService.route(request, function(response, status) {
-      console.log(status);
-      globalVariable[yelp_address] = response;
+      console.log("Status of google direction service is: " + status);
+      yelp_routes[yelp_address] = response;
 
       if (status == google.maps.DirectionsStatus.OK) {
-        console.log("CHECKING STATUS, line 82")
         directionsDisplay.setDirections(response);
       }
     });
 
-    console.log("line 87 done");
   }
