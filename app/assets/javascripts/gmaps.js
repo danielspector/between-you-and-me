@@ -2,7 +2,7 @@
   var map;
   var directionsDisplay;
   globalVariable = {}
-  hashForLatLong = {}
+  var hashForLatLon = {}
   google.maps.event.addDomListener(window, 'load', initialize);
   // google.maps.event.addDomListener(window, 'load', calcRoute);
 
@@ -10,7 +10,8 @@
     directionsDisplay = new google.maps.DirectionsRenderer();
 
     var mapOptions = {
-      zoom: 7,
+      //we will update this later
+      zoom: 12,
       center: new google.maps.LatLng(40.757395, -73.989977)
     };
 
@@ -20,25 +21,44 @@
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
+    // @loc1
+
+    //@loc2
+
+
+    // Take the lat lon of the yelp points and put them in the hash
+    // Also create markers for each.
     $('.yelp-latlong').each(function(){
       var lat = $(this).text().split(', ')[0];
       var lon = $(this).text().split(', ')[1];
       var thisLatLong = new google.maps.LatLng(lat, lon);
+      hashForLatLon[$('this').text()] = thisLatLong;
       var marker = new google.maps.Marker({
         position: thisLatLong,
         map: map,
       });
     });
 
+    // Get lat lon of the friends' locations and put them in the hash
+    // Also create markers for each.
+    $('.friend-latlong').each(function(){
+      var lat = $(this).text().split(', ')[0];
+      var lon = $(this).text().split(', ')[1];
+      var thisLatLong = new google.maps.LatLng(lat, lon);
+      hashForLatLon[$('this').text()] = thisLatLong;
+      var marker = new google.maps.Marker({
+        position: thisLatLong,
+        map: map,
+      });
+    });
+    
 
-    // var myLatlng = new google.maps.LatLng(40.2, -73.989977);
-    // var marker = new google.maps.Marker({
-    //   position: myLatlng,
-    //   map: map,
-    //   title:"Hello World!"
-    // });
 
- 
+
+    // Update the zoom level based on the friends' and yelp locations
+    map.setCenter(new google.maps.LatLng(40.757395, -73.989977));
+    var bounds = new google.maps.LatLngBounds();
+
 
     var control = document.getElementById('control');
     control.style.display = 'block';

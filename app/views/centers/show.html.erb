@@ -16,6 +16,10 @@
            <option value="<%= business[:address] %>"><%= business[:name] %></option>
          <% end %>
        </select>
+       <p style="display: none;" class="friend-latlong"><%= @loc1.latitude.to_s + ", " + @loc1.longitude.to_s %></p>
+       <p style="display: none;" class="friend-latlong"><%= @loc2.latitude.to_s + ", " + @loc2.longitude.to_s %></p>
+
+
      </div>
 
     <div id="directions-panel"></div>
