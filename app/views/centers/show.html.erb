@@ -1,3 +1,5 @@
+
+
 <div class="row max-height">
 
   <div class="col-xs-3 max-height overflow-y-scroll">
@@ -30,6 +32,7 @@
         <p class="yelp-point"><%= business[:address] %></p>
         <p><img src="<%= business[:rating_img] %>"><p>
         <p><%= business[:review_count] %> reviews</p>
+        <p style="display: none;" class="yelp-latlong"><%= business[:lat].to_s + ", " + business[:long].to_s %></p>
       </div>
     <% end %>
   </div>
