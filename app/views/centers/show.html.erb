@@ -39,6 +39,7 @@
 
   <div style="display:none" class="text" id="number_form">
     <%= form_tag(send_text_path, :method => :get, remote: true) do %>
+      <div style=display:none><input name='sent_from_add' type='hidden' value='<%= @loc2.address %>'/></div>
       <%= text_field_tag(:number, nil, :placeholder => '555-555-5555')%><br>
       <%= submit_tag("Submit", id: "close-this") %>
     <% end %>

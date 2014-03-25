@@ -9,11 +9,12 @@ class CentersController < ApplicationController
   end
 
   def send_text
-    line = %w(bro son dog yea sup whoa)
+    to_address = params[:sent_gmaps].split(" ").join("+")
+    from_address = params[:sent_from_add].split(" ").join("-")
     TWILIO_CLIENT.account.messages.create(
-      from: +15036837889, #"+13473826253",
+      from: "+13473826253", # +15036837889
       to: params[:number],
-      body: "Hey! We're going to https://www.google.com/maps/place/#{params[:sent_gmaps].split(" ").join("-")}"
+      body: "Hey! We're going to https://www.google.com/maps/dir/#{from_address}/#{to_address}"
     )
 
     respond_to do |format|
