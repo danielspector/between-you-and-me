@@ -1,12 +1,21 @@
 function initialize() {
   directionsDisplay = new google.maps.DirectionsRenderer();
 
+  var centerData = $('#center-data').text();
+  var centerLatitude = centerData.split(',')[0];
+  var centerLongitude = centerData.split(',')[1];
+
   var mapOptions = {
     zoom: 12,
-    center: new google.maps.LatLng(40.757395, -73.989977)
+    center: new google.maps.LatLng(centerLatitude, centerLongitude)
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(centerLatitude, centerLongitude),
+    map: map
+  })
 
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('directions-panel'));
@@ -33,7 +42,7 @@ function initialize() {
     });
   });
 
-  map.setCenter(new google.maps.LatLng(40.757395, -73.989977));
+  // map.setCenter(new google.maps.LatLng(40.757395, -73.989977));
 
   var control = document.getElementById('control');
   control.style.display = 'block';

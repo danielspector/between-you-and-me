@@ -2,8 +2,9 @@
 
 <div class="row max-height">
 
-  <div class="col-xs-9 map-panel max-height">
+  <div class="col-xs-12 map-panel max-height">
     <div id="map-canvas" class="max-height"></div>
+    <span id="center-data" class="hidden"><%= "#{@center.latitude},#{@center.longitude}" %></span>
   </div>
 
   <div class="col-xs-3 max-height all-yelp-results-div">
