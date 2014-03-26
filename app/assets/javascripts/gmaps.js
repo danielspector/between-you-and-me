@@ -61,6 +61,7 @@ function calcRoute(yelp_address) {
   var directionsService = new google.maps.DirectionsService();
 
   if ( yelp_routes[yelp_address] ) {
+    console.log("You clicked here already.")
     directionsDisplay.setDirections( yelp_routes[yelp_address] );
     return
   }
