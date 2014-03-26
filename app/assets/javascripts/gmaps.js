@@ -75,7 +75,7 @@ function calcRoute(yelp_address) {
 $(document).ready(function() {
   var map;
   var directionsDisplay;
-  var yelp_routes = {}
+  yelp_routes = {}
   hashForLatLon = {}
   google.maps.event.addDomListener(window, 'load', initialize);
 })

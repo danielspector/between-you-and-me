@@ -10,12 +10,10 @@ html, body, #map_canvas {
   padding: 0;
 }
 
-#map_panel {
-  height: 100% !important;
-}
-
-#map_canvas {
-  height: 100% !important;
+#directions-panel {
+  margin-left: 10px;
+  padding-top: 10px;
+  display: none;
 }
 
 .max-height {
@@ -28,6 +26,48 @@ body {
 
 .overflow-y-scroll {
   overflow-y: scroll;
+}
+
+.map-panel {
+  padding-right: 0;
+}
+
+// yelp result css
+.yelp-result {
+  padding: 8px 8px 0px 8px;
+  height: 33%;
+}
+
+.yelp-result:hover {
+  background-color: #B3D1FF;
+  h2 a {
+    color: #FA9E25;
+  }
+}
+
+.inactive-yelp {
+  display: none;
+}
+
+.active-yelp {
+  display: block;
+}
+
+p.yelp-point {
+  margin-bottom: 5px;
+}
+
+.all-yelp-results-div {
+  padding-left: 0;
+}
+
+.yelp-result-h2 {
+  margin: 0;
+}
+
+// google directions panel
+.adp-warnbox {
+  display: none;
 }
 
 // For fancybox
