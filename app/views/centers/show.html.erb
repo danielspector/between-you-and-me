@@ -2,7 +2,21 @@
 
 <div class="row max-height">
 
-  <div class="col-xs-3 max-height overflow-y-scroll">
+  <div class="col-xs-12 map-panel max-height">
+    <div id="map-canvas" class="max-height"></div>
+    <span id="center-data" class="hidden"><%= "#{@center.latitude},#{@center.longitude}" %></span>
+  </div>
+
+  <div class="col-xs-3 max-height all-yelp-results-div">
+    <% @best_three_hash.reverse.each_with_index do |business, index| %>
+      <div class="yelp-result active-yelp" id="yelp-result-<%= index %>">
+        <h2 class="yelp-result-h2"><a target="_blank"><%= business[:name] %></a></h2>
+        <p class="yelp-point"><%= business[:address] %></p>
+        <p><img src="<%= business[:rating_img] %>"><p>
+        <p><%= business[:review_count] %> reviews</p>
+        <p style="display: none;" class="yelp-latlong"><%= business[:lat].to_s + ", " + business[:long].to_s %></p>
+      </div>
+    <% end %>
 
     <div id="control">
        <strong>Start:</strong>
@@ -22,23 +36,9 @@
 
      </div>
 
-    <div id="directions-panel"></div>
-  </div>
+  <div id="directions-panel"></div>
 
-  <div class="col-xs-6 map-panel max-height">
-    <div id="map-canvas" class="max-height"></div>
-  </div>
-
-  <div class="col-xs-3">
-    <% @best_three_hash.reverse.each_with_index do |business, index| %>
-      <div class="yelp-result" id="yelp-result-<%= index %>">
-        <h2><a target="_blank" href="<%= business[:the_url] %>"><%= business[:name] %></a></h2>
-        <p class="yelp-point"><%= business[:address] %></p>
-        <p><img src="<%= business[:rating_img] %>"><p>
-        <p><%= business[:review_count] %> reviews</p>
-        <p style="display: none;" class="yelp-latlong"><%= business[:lat].to_s + ", " + business[:long].to_s %></p>
-      </div>
-    <% end %>
+<!--     <a href="#number_form" class="fancybox"><button type="button" class="btn btn-primary btn-lg"><div>Text This!</div></button></a> -->
   </div>
 
   <div style="display:none" class="text" id="number_form">
@@ -49,5 +49,4 @@
     <% end %>
   </div>
 
-  <a href="#number_form" class="fancybox"><button type="button" class="btn btn-primary btn-lg"><div>Text This!</div></button></a>
 </div>
