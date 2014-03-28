@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require fancybox
-//= require chosen-jquery
+//= require jquery.ui.all
 //= require bootstrap
+//= require chosen-jquery
 //= require gmaps
 //= require_tree .

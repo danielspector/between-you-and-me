@@ -15,16 +15,16 @@
 
 
       <div class="form-group">
-        <label><%=  "Where do you want to go together?" %></label>
-        <select class="chosen-select" name="search[term]" data-placeholder="Choose a Yelp Category!" class="form-control input-medium">
+          <label for="autocomplete"><%=  "Where do you want to go together?" %></label>
+          <input id="autocomplete" name="search[term]" class="form-control input-medium">
+        <!-- <select class="chosen-select" name="search[term]" data-placeholder="Choose a Yelp Category!" class="form-control input-medium">
           <option value=""></option>
-          <% @categories.each do |cat| %>
-          <option><%= cat.name %></option>
-          <% end %>
-        </select>
+          <#% @categories.each do |cat| %>
+          <option><%#= cat.name %></option>
+          <%# end %>
+        </select> -->
       </div>
       <%= submit_tag "Get the hell out of here", :id => 'find_point_button', class: "btn btn-warning btn-lg btn-block" %>
-
     <!--   <input type="button" id="go" value="Find Me!" class="btn btn-warning" /> -->
     <% end %>
   </div>

@@ -1,0 +1,3 @@
+$(document).ready(function(){
+  $("#autocomplete").autocomplete({source: <%= Category.all.pluck(:name) %>});
+});
