@@ -1,0 +1,19 @@
+<h1>Let's Talk</h1>
+
+<ul id="chat">
+  <% @messages.each do |message| %>
+    <p><%= message.name.capitalize %> says... <%= message.content %></p>
+  <% end %>
+</ul>
+
+<%= form_for(Message.new, remote: true) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit "Send" %>
+<% end %>
+
+<%= subscribe_to "/messages/new" %>

@@ -15,6 +15,6 @@
 //= require fancybox
 //= require jquery.ui.all
 //= require bootstrap
-//= require chosen-jquery
+//= require private_pub
 //= require gmaps
 //= require_tree .

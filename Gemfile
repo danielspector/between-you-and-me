@@ -14,6 +14,8 @@ gem 'chosen-rails'
 gem 'jquery-ui-rails'
 gem 'twilio-ruby'
 gem 'fancybox2-rails', '~> 0.2.8'
+gem 'private_pub'
+gem 'thin'
 
 group :development, :test do
   gem 'quiet_assets'

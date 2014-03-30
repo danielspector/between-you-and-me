@@ -10,4 +10,6 @@ BetweenUNMe::Application.routes.draw do
 
   get "/center/:id" => "centers#show", as: :center
   get "/twilio" => "centers#send_text", as: :send_text
+  get "/messages" => "messages#index", as: :message
+  post "/messages" => "messages#create"
 end
