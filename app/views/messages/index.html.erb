@@ -2,7 +2,7 @@
 
 <ul id="chat">
   <% @messages.each do |message| %>
-    <p><%= message.name.capitalize %> says... <%= message.content %></p>
+    <p><%= message.name %> says... <%= message.content %> at <%= message.created_at.to_formatted_s(:long_ordinal) %></p>
   <% end %>
 </ul>
 

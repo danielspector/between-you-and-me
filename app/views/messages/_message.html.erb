@@ -1,5 +1,6 @@
 <% if @message %>
-  <p><%= @message.name %> says... <%= @message.content %></p>
+  <p><%= @message.name %> says... <%= @message.content %> at <%= @message.created_at.to_formatted_s(:long_ordinal) %></p>
+
 <% else %>
-  <p>No Messages Yet! Want to post?
+  <p>No Messages Yet! Want to post?</p>
 <% end %>
