@@ -24,7 +24,7 @@ function initialize() {
     var lat = $(this).text().split(', ')[0];
     var lon = $(this).text().split(', ')[1];
     var thisLatLong = new google.maps.LatLng(lat, lon);
-    hashForLatLon[$('this').text()] = thisLatLong;
+    hashForLatLon['yelp ' + $(this).text()] = thisLatLong;
     var marker = new google.maps.Marker({
       position: thisLatLong,
       map: map
@@ -35,14 +35,28 @@ function initialize() {
     var lat = $(this).text().split(', ')[0];
     var lon = $(this).text().split(', ')[1];
     var thisLatLong = new google.maps.LatLng(lat, lon);
-    hashForLatLon[$('this').text()] = thisLatLong;
+    hashForLatLon['friend ' + $(this).text()] = thisLatLong;
+
     var marker = new google.maps.Marker({
       position: thisLatLong,
       map: map,
     });
   });
 
-  // map.setCenter(new google.maps.LatLng(40.757395, -73.989977));
+  console.log(hashForLatLon);
+
+  // Update zoom level based on positions of yelp and friend markers
+
+  var bounds = new google.maps.LatLngBounds();
+  $.each(hashForLatLon, function(key, latlon) {
+   // console.log(key);
+   // console.log(latlon);
+    console.log(bounds);
+    bounds.extend(latlon);
+  })
+
+  map.fitBounds(bounds);
+
 
   var control = document.getElementById('control');
   control.style.display = 'block';
