@@ -10,6 +10,14 @@ class MessagesController < ApplicationController
     @message = @center.messages.create(message_params)
   end
 
+  def destroy
+    @center = Center.find(params[:id])
+    @center.messages.destroy_all
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def find_center

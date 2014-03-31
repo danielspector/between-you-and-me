@@ -23,11 +23,9 @@ class CentersController < ApplicationController
     end
   end
 
-  def destroy
-    @center = Center.find(params[:id])
-    @center.messages.destroy_all
-    respond_to do |format|
-      format.js
-    end
+  private
+
+  def message_params
+    params.require(:message).permit(:name, :content)
   end
 end

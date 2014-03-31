@@ -1,6 +1,6 @@
 <%= link_to "Chat!", center_messages_path, id: "chat_link" %>
-<div class="chat_box hidden_chat" id="chat_form">
-    <ul id="chat">
+  <div class="chat_box hidden_chat" id="chat_form">
+     <ul id="chat_ul_to_append">
       <% @messages.each do |message| %>
         <p class="chat_line"><%= message.name %> says... <%= message.content %></p>
       <% end %>
@@ -15,11 +15,11 @@
         <br>
       <%= f.submit "Send" %>
     <% end %>
- <!--    <%#= button_to delete_messages_path(@center.messages, @center), class: "destroy-message", remote: true, method: :delete %>
- -->
+
     <%= button_to [@center, @message], remote: true, method: :delete do %>
       Clear Chats
     <% end %>
+    <%= subscribe_to "/center/#{@center.id}/messages" %>
   </div>
 
 <div class="row max-height">
@@ -34,7 +34,7 @@
       <div class="yelp-result active-yelp" id="yelp-result-<%= index %>">
         <h2 class="yelp-result-h2"><a target="_blank"><%= business[:name] %></a></h2>
         <p class="yelp-point"><%= business[:address] %></p>
-        <p><img src="<%= business[:rating_img] %>"><p>
+        <p><img src="<%= business[:rating_img] %>"></p>
         <p><%= business[:review_count] %> reviews</p>
         <p style="display: none;" class="yelp-latlong"><%= business[:lat].to_s + ", " + business[:long].to_s %></p>
       </div>
@@ -63,14 +63,13 @@
     <a href="#number_form" class="fancybox"><button type="button" class="btn btn-primary btn-lg"><div>Text This!</div></button></a>
   </div>
 
-  <div style="display:none" class="text" id="number_form">
-    <%= form_tag(send_text_path, :method => :get, remote: true) do %>
-      <div style=display:none><input name='sent_from_add' type='hidden' value='<%= @loc2.address %>'/></div>
-      <%= text_field_tag(:number, nil, :placeholder => '555-555-5555')%><br>
-      <%= submit_tag("Submit", id: "close-this") %>
-    <% end %>
+    <div style="display:none" class="text" id="number_form">
+      <%= form_tag(send_text_path, :method => :get, remote: true) do %>
+        <div style=display:none><input name='sent_from_add' type='hidden' value='<%= @loc2.address %>'/></div>
+        <%= text_field_tag(:number, nil, :placeholder => '555-555-5555')%><br>
+        <%= submit_tag("Submit", id: "close-this") %>
+      <% end %>
+    </div>
+    </div>
   </div>
-
 </div>
-
-<%= subscribe_to "/messages/new" %>

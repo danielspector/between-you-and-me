@@ -1,19 +1,19 @@
-<h1>Let's Talk</h1>
+<!-- <h1>Let's Talk</h1>
 
 <ul id="chat">
-  <% @messages.each do |message| %>
-    <p><%= message.name %> says... <%= message.content %> at <%= message.created_at.to_formatted_s(:long_ordinal) %></p>
-  <% end %>
+  <#% @messages.each do |message| %>
+    <p><%= message.name %> says... <%= message.content %></p>
+  <#% end %>
 </ul>
 
-<%= form_for([@center, @message], remote: true) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<#%= form_for(@message, remote: true) do |f| %>
+  <#%= f.label :name %>
+  <#%= f.text_field :name %>
   <br>
-  <%= f.label :content %>
-  <%= f.text_field :content %>
+  <#%= f.label :content %>
+  <#%= f.text_field :content %>
   <br>
-  <%= f.submit "Send" %>
-<% end %>
+  <#%= f.submit "Send" %>
+<#% end %>
 
-<%= subscribe_to "/messages/new" %>
+<#%= subscribe_to "/messages/new" %> -->

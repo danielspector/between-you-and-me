@@ -1,5 +1,5 @@
-<%= publish_to "/messages/new" do %>
-  $("#chat").append("<%= j render(@message) %>");
+<%= publish_to "/center/#{@center.id}/messages" do %>
+  $("ul#chat_ul_to_append").append("<%= render_js @message %>");
   $("#new_message")[0].reset();
 <% end %>
 
