@@ -6,7 +6,7 @@
   <% end %>
 </ul>
 
-<%= form_for(Message.new, remote: true) do |f| %>
+<%= form_for([@center, @message], remote: true) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br>

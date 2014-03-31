@@ -1,4 +1,26 @@
+<%= link_to "Chat!", center_messages_path, id: "chat_link" %>
+<div class="chat_box hidden_chat" id="chat_form">
+    <ul id="chat">
+      <% @messages.each do |message| %>
+        <p class="chat_line"><%= message.name %> says... <%= message.content %></p>
+      <% end %>
+    </ul>
 
+    <%= form_for([@center, @message], remote: true) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+        <br>
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+        <br>
+      <%= f.submit "Send" %>
+    <% end %>
+ <!--    <%#= button_to delete_messages_path(@center.messages, @center), class: "destroy-message", remote: true, method: :delete %>
+ -->
+    <%= button_to [@center, @message], remote: true, method: :delete do %>
+      Clear Chats
+    <% end %>
+  </div>
 
 <div class="row max-height">
 
@@ -50,3 +72,5 @@
   </div>
 
 </div>
+
+<%= subscribe_to "/messages/new" %>
