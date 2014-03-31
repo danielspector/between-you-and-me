@@ -6,20 +6,22 @@
       <% end %>
     </ul>
 
-    <%= form_for([@center, @message], remote: true) do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= form_for([@center, @message], remote: true) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
         <br>
-      <%= f.label :content %>
-      <%= f.text_field :content %>
+        <%= f.label :content %>
+        <%= f.text_field :content %>
         <br>
-      <%= f.submit "Send" %>
-    <% end %>
 
-    <%= button_to [@center, @message], remote: true, method: :delete do %>
+      <%= f.submit "Send", class: "btn btn-primary form-actions" %>
+    
+    <% end %>
+      <%= button_to [@center, @message], remote: true, method: :delete, class: "btn btn-danger", id: "style-button" do %>
       Clear Chats
     <% end %>
     <%= subscribe_to "/center/#{@center.id}/messages" %>
+    
   </div>
 
 <div class="row max-height">
