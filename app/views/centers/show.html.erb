@@ -1,7 +1,7 @@
 <%= link_to "Chat!", center_messages_path, id: "chat_link" %>
   <div class="chat_box hidden_chat" id="chat_form">
      <ul id="chat_ul_to_append">
-      <% @messages.each do |message| %>
+      <% @messages.select {|m| m.name != nil}.each do |message| %>
         <p class="chat_line"><%= message.name %> says... <%= message.content %></p>
       <% end %>
     </ul>

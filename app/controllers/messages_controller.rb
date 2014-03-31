@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
 
   def index
     @messages = @center.messages.all
-    @message = Message.new
+    # @message = Message.new
   end
 
   def create

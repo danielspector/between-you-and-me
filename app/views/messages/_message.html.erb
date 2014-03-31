@@ -1,1 +1,3 @@
-<p class="chat_line"><%= @message.name %> says... <%= @message.content %></p>
+<% unless @message.name.nil? %>
+  <p class="chat_line"><%= @message.name %> says... <%= @message.content %></p>
+<% end %>
