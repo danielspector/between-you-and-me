@@ -35,6 +35,7 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap_form (2.0.1)
     builder (3.1.4)
     chosen-rails (1.1.0)
       coffee-rails (>= 3.2)
@@ -192,6 +193,7 @@ DEPENDENCIES
   actionpack-action_caching
   better_errors
   binding_of_caller
+  bootstrap_form
   chosen-rails
   coffee-rails (~> 4.0.0)
   fancybox2-rails (~> 0.2.8)

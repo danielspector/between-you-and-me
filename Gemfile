@@ -16,6 +16,7 @@ gem 'twilio-ruby', '~> 3.11'
 gem 'fancybox2-rails', '~> 0.2.8'
 gem 'private_pub'
 gem 'thin'
+gem 'bootstrap_form'
 
 group :development, :test do
   gem 'quiet_assets'
