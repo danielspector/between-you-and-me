@@ -40,5 +40,5 @@ yelpResultClick = (that) ->
 $(document).ready ->
 
   $('.yelp-result').on 'click', -> yelpResultClick( $(this) )
-
-  addressForTwilio(yelp_address)
+  # Commented this out because it was causing problems--uncomment later!!
+  # addressForTwilio(yelp_address)
