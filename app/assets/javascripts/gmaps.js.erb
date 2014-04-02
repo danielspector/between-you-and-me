@@ -31,12 +31,11 @@ function initialize() {
       position: thisLatLong,
       map: map,
       icon: "<%= image_path 'marker-stroked-24.png' %>", 
-      title: String(index)
       // using maki images https://www.mapbox.com/maki/
     });
 
     // Add info about points on hover
-    var contentString = String(index) + ' more info!';    
+    var contentString = $('#yelp-result-'+index+' h2 a').text();
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
@@ -44,6 +43,10 @@ function initialize() {
 
     google.maps.event.addListener(marker, 'mouseover', function() {
       infowindow.open(map, marker);
+    });
+
+    google.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
     });
 
   });
@@ -58,7 +61,6 @@ function initialize() {
       position: thisLatLong,
       map: map,
       icon: "<%= image_path 'heart-24.png' %>",
-      title: String(index)
     });
 
     // Add info about points on hover
