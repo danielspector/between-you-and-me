@@ -12,37 +12,91 @@ function initialize() {
 
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(centerLatitude, centerLongitude),
-    map: map
-  })
+  // We don't want a marker on the center point!
+  // var marker = new google.maps.Marker({
+  //   position: new google.maps.LatLng(centerLatitude, centerLongitude),
+  //   map: map,
+  //   icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+  // })
 
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
-  $('.yelp-latlong').each(function(){
+  $('.yelp-latlong').each(function(index){
     var lat = $(this).text().split(', ')[0];
     var lon = $(this).text().split(', ')[1];
     var thisLatLong = new google.maps.LatLng(lat, lon);
-    hashForLatLon[$('this').text()] = thisLatLong;
-    var marker = new google.maps.Marker({
-      position: thisLatLong,
-      map: map
-    });
-  });
-
-  $('.friend-latlong').each(function(){
-    var lat = $(this).text().split(', ')[0];
-    var lon = $(this).text().split(', ')[1];
-    var thisLatLong = new google.maps.LatLng(lat, lon);
-    hashForLatLon[$('this').text()] = thisLatLong;
+    hashForLatLon['yelp ' + $(this).text()] = thisLatLong;
     var marker = new google.maps.Marker({
       position: thisLatLong,
       map: map,
+      icon: "<%= image_path 'marker-stroked-24.png' %>", 
+      // using maki images https://www.mapbox.com/maki/
+    });
+
+    // Add info about points on hover
+    var contentString = $('#yelp-result-'+index+' h2 a').text();
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    google.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
+
+    google.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
+    });
+
+  });
+
+  $('.friend-latlong').each(function(index){
+    var lat = $(this).text().split(', ')[0];
+    var lon = $(this).text().split(', ')[1];
+    var thisLatLong = new google.maps.LatLng(lat, lon);
+    hashForLatLon['friend ' + $(this).text()] = thisLatLong;
+
+    var marker = new google.maps.Marker({
+      position: thisLatLong,
+      map: map,
+      icon: "<%= image_path 'heart-24.png' %>",
+    });
+
+    // Add info about points on hover
+    var contentString = ''
+    if (index === 0) {
+      contentString = 'you';
+    }
+    else {
+     contentString = 'your friend';
+    }
+    
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    google.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
+
+    google.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
     });
   });
 
-  // map.setCenter(new google.maps.LatLng(40.757395, -73.989977));
+
+  // Update zoom level based on positions of yelp and friend markers
+
+  var bounds = new google.maps.LatLngBounds();
+  $.each(hashForLatLon, function(key, latlon) {
+    bounds.extend(latlon);
+  })
+
+  map.fitBounds(bounds);
+
+  
 
   var control = document.getElementById('control');
   control.style.display = 'block';
