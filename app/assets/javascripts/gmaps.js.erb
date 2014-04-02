@@ -35,6 +35,16 @@ function initialize() {
       // using maki images https://www.mapbox.com/maki/
     });
 
+    // Add info about points on hover
+    var contentString = String(index) + ' more info!';    
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    google.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.open(map, marker);
+    });
 
   });
 
@@ -52,14 +62,25 @@ function initialize() {
     });
 
     // Add info about points on hover
-    var contentString = 'test';
+    var contentString = ''
+    if (index === 0) {
+      contentString = 'you';
+    }
+    else {
+     contentString = 'your friend';
+    }
+    
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString
     });
 
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker, 'mouseover', function() {
       infowindow.open(map, marker);
+    });
+
+    google.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
     });
   });
 
