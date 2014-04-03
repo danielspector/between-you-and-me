@@ -8,7 +8,8 @@
 h1 {
   font-family: 'Lato', sans-serif;
   text-align: center;
-  color: rgb(127, 140, 141)
+  color: white;
+
 }
 
 .form-group label{
@@ -16,5 +17,19 @@ h1 {
   text-align: center;
 }
 
+body.points {
+  background: url(caught_wills_eye_edited.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
+#vcenter {
+    padding-top: 100px;
+    float:none;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:-4px;
+}
 
