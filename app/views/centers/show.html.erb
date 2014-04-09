@@ -6,7 +6,6 @@
         <p class="chat_line"><%= message.name %> says... <%= message.content %></p>
       <% end %>
     </ul>
-
       <%= form_for([@center, @message], remote: true) do |f| %>
         <%= f.label :name %>
         <%= f.text_field :name %>
