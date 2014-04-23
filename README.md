@@ -1,54 +1,42 @@
-# Between You & Me 
+# Between You And Me
 
-![Whiteboard](http://i.imgur.com/n78p1GS.jpg)
+## Description
 
-## MVP ##
+Between You and Me is a really convenienet way to meet your friends anywhere and get the best recommendations for places to go. We made it as easy as possible for you to collaborate with your friends and find great places to relax or party. 
 
-* Given two addresses, return a place to meet in between them (either using walking, or how the crow flies) 
+## Screenshots
 
+![Home Screen](http://i.imgur.com/zSufOLj.png)
+![Directions](http://i.imgur.com/ru8NhDx.png)
 
-## Other features ##
+## Background
 
-* Using transit to find a midpoint
-* Types of places (coffee shops, restaurants, bars--use Yelp categories)
-** Foursquare checkins: least likely to be crowded at a certain time
-** Places that are open at a certain time
-* Finding the most convenient place for multiple people
-* Login
-** Share addresses with friends
-** Safe neighborhoods only
-** Whitelisted neighborhoods
+We created this application because currently there is no great solution for finding great places to go with friends. Constantly going back over text to go to the same bar again and again sucks. We set out to make a better solution that we would enjoy and we hope you'll like it too.
 
+## Features
 
-## Technologies ##
+* Hang out with your friends fairly - we find the center location between you two so no one has to travel more than everyone else
+* Have conversations with your friends in real-time utilizing WebSockets
+* Get directions to your location via with Google Directions API
+* Find the best place for you. We give you three choices based on number of Yelp reviews and ratings. You make the final call.
+* Text the directions via Twilio so you don't forget along the way.
 
-* Google Maps API
-* OpenStreetMap
-* Leaflets (on Google Maps)
-* Yelp API
-* Javascript
-* Rails
-* Oauth
-* Postgres
+## Usage
 
-## To-Do ##
+Just enter two addresses and pick the place you want to go. We'll take care of the rest. Click around, chat with friends and have a great time.
 
-Feature List - Needs to be implemented
- 
-1. Yelp result, sort by highest rating rather than first - DONE!
-2. Actually use the interactive google maps
-3. Use the Chosen jQuery plugin from Harvest for the Yelp categories - DONE! - Still need to add some functionality
-  a. http://www.yelp.com/developers/documentation/category_list
-4. Top three results or ability to pass and get the new one
-5. Open at a specific time, when they want to go
-6. Train directions from both addresses to the yelp midpoint
-7. Option to switch between transit, driving and walking directions
-8. Find the midpoint based on travel time rather than distance
-9. Omniauth user authentication - Facebook and get friends addresses (Google)
-10. Getting/storing addresses that you've been previously searched for.
-11. Front - End. Presentation is so key.
+## Development/Contribution
 
-##Bug List, to fix##
+We love pull requests! We've made incredible progress but we would love community contributions. All we ask is that you submit tests along with your pull request so we can keep our code base clean and consistent. 
 
-1. 'Open & Closed' feature is currently broken - Removed.
-2. Can't get data-placeholder to work on chosen plugin selector.
+## Author
+
+Between You and Me was created with love in the Ruby-004 semester at the [Flatiron School](www.flatironschool.com) by:
+
+[Laura Conwill](https://github.com/lauraconwill), [Sunwoo Yang](https://github.com/sunwooz) and [Daniel Spector](https://github.com/danielspector).
+
+If you have any questions, please feel free to reach out!
+
+## License
+
+Between You and Me is licensed under MIT. That means that you are generally free to use the app as you choose but we assume no liability relating to the application. Please see the LICENSE file for complete details.
