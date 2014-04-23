@@ -2,7 +2,7 @@
 
 ## Description
 
-Between You and Me is a really convenienet way to meet your friends anywhere and get the best recommendations for places to go. We made it as easy as possible for you to collaborate with your friends and find great places to relax or party. 
+Between You and Me is a really convenient way to meet your friends anywhere and get the best recommendations for places to go. We made it as easy as possible for you to collaborate with your friends and find great places to relax or party. 
 
 ## Screenshots
 
